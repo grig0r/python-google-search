@@ -31,7 +31,7 @@ create search instance
 
 .. code-block:: pycon
 
-  >>> search = gclient.Search('perl')
+  >>> search = gclient.Search('perl language')
 
 get list of result objects
 
@@ -40,8 +40,8 @@ get list of result objects
   >>> results = search.results(20)
   >>> results
   [<Result: The Perl Programming Language - www.perl.org (https://www.perl.org/)>,
+   <Result: Perl – Wikipedia, wolna encyklopedia (https://pl.wikipedia.org/wiki/Perl)>,
    <Result: Perl - Wikipedia (https://en.wikipedia.org/wiki/Perl)>,
-   <Result: Perl - Introduction - tutorialspoint.com (http://www.tutorialspoint.com/perl/perl_introduction.htm)>,
   [...]
 
 get attributes from result object
