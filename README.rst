@@ -1,6 +1,6 @@
 python-google-search
 ======
-Simple google search client library. Google version of [python-duckduckgo-search](https://github.com/grig0r/python-duckduckgo-search)
+Simple google search client library. Google version of <https://github.com/grig0r/python-duckduckgo-search>
 
 Dependencies
 ----
