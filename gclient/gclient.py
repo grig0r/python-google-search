@@ -27,10 +27,25 @@ class ResultPage(object):
         self.q = q
         self.start = start
         self.soup = self.get_soup()
-        self.results = [Result(g_tag) for g_tag in self.soup.find_all('div', class_='g')]
+        results = [Result(g_tag) for g_tag in self.soup.find_all('div', class_='g')]
+        self.results = self.filter_duplicate_results(results)
 
     def __repr__(self):
         return '<\'{}\' ({})>'.format(self.q, self.start)
+
+    @staticmethod
+    def filter_duplicate_results(results):
+        out_results = []
+        for result in results:
+            if result.url not in (r.url for r in out_results):
+                out_results.append(result)
+        for index, out_result in enumerate(out_results):
+            if not out_result.description:
+                with_description = [r for r in results
+                    if r.url == out_result.url and r.description]
+                if with_description:
+                    out_results[index] = with_description[0]
+        return out_results
 
     def get_soup(self):
         payload = {'q' : self.q, 'start' : self.start}
